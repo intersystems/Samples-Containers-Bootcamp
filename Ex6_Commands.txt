@@ -1,0 +1,25 @@
+Exercise 6 - multi-line commands are provided here for convenience.
+
+6.1
+
+docker run --detach \
+--publish 52773:52773 \--volume /data/dur:/dur \
+--env ISC_DATA_DIRECTORY=/dur/iconfig \
+--name iris21 \
+–-init store/intersystems/iris-community:2019.3.0.302.0
+
+
+6.2
+
+docker run -d \
+-p 9091:51773 \
+-p 9092:52773 \
+-p 9093:53773 \
+--volume /tmp:/host \
+--volume /data/dur:/dur \
+--env ISC_DATA_DIRECTORY=/dur/iconfig \
+-h iris \
+--name iris \
+--init \--cap-add IPC_LOCK \
+$CONTAINER_IMAGE \
+--password-file /host/pwd.txt
